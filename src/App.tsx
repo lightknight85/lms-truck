@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
-  const [count, setCount] = useState(0)
+import LoginPage from './pages/LoginPage';
+import VerifyOtpPage from './pages/VerifyOtpPage';
+import CoursesListPage from './pages/CoursesListPage';
+import CourseDetailPage from './pages/CourseDetailPage';
 
+const App: React.FC = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="font-sans antialiased text-right"> {/* فونت پیش‌فرض و راست‌چین کلی */}
+        <Routes>
+          {/* صفحه ورود/ثبت نام با شماره تلفن */}
+          <Route path="/login" element={<LoginPage />} />
+          {/* صفحه تأیید کد یکبار مصرف (OTP) */}
+          <Route path="/verify-otp" element={<VerifyOtpPage />} />
+          {/* صفحه اصلی: لیست دوره‌ها */}
+          <Route path="/" element={<CoursesListPage />} />
+          {/* صفحه جزئیات یک دوره خاص (با ID داینامیک) */}
+          <Route path="/courses/:id" element={<CourseDetailPage />} />
+          {/* در آینده می‌توانید مسیرهای دیگری مثل پروفایل کاربر یا صفحه 404 اضافه کنید */}
+          {/* <Route path="*" element={<div>صفحه یافت نشد!</div>} /> */}
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </Router>
+  );
+};
 
-export default App
+export default App;
