@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-// import axios from 'axios'; // بعداً برای ارتباط با بک‌اند استفاده می‌شود
+import { useNavigate, Link } from 'react-router-dom'; // Link را هم اینجا وارد کنید
 
 const LoginPage: React.FC = () => {
   const [phoneNumber, setPhoneNumber] = useState<string>('');
@@ -11,8 +10,7 @@ const LoginPage: React.FC = () => {
     e.preventDefault();
     setError('');
 
-    // اعتبارسنجی اولیه شماره تلفن
-    if (!phoneNumber || !/^\d{10,11}$/.test(phoneNumber)) { // مثال: 10 یا 11 رقم عددی
+    if (!phoneNumber || !/^\d{10,11}$/.test(phoneNumber)) {
       setError('شماره تلفن نامعتبر است.');
       return;
     }
@@ -22,7 +20,6 @@ const LoginPage: React.FC = () => {
       // const response = await axios.post('/api/send-otp/', { phone_number: phoneNumber });
       // console.log('OTP sent successfully:', response.data);
 
-      // در حال حاضر فقط برای تست ناوبری:
       navigate('/verify-otp', { state: { phoneNumber } });
 
     } catch (err) {
@@ -43,7 +40,7 @@ const LoginPage: React.FC = () => {
             type="tel"
             placeholder="مثال: 09121234567"
             className="w-full p-4 mb-4 border border-gray-300 rounded-lg text-lg focus:outline-none focus:ring-4 focus:ring-blue-200 transition duration-200 text-center ltr:text-left rtl:text-right"
-            dir="ltr" // شماره تلفن بهتر است چپ به راست نوشته شود
+            dir="ltr"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
           />
@@ -59,6 +56,16 @@ const LoginPage: React.FC = () => {
         <p className="mt-8 text-sm text-gray-500">
           با ادامه دادن، <a href="#" className="text-blue-600 hover:underline">قوانین و مقررات</a> را می‌پذیرم.
         </p>
+
+        {/* اضافه کردن لینک برای مشاهده دوره‌ها بدون ثبت نام */}
+        <div className="mt-6 pt-6 border-t border-gray-200">
+          <Link
+            to="/courses"
+            className="text-blue-600 hover:underline font-semibold text-lg"
+          >
+            مشاهده دوره‌ها بدون ثبت نام ←
+          </Link>
+        </div>
       </div>
     </div>
   );

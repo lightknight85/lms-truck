@@ -85,7 +85,7 @@ const CourseDetailPage: React.FC = () => {
       <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4" dir="rtl">
         <div className="bg-white rounded-xl shadow-lg p-8 text-center">
           <p className="text-red-600 mb-4">{error}</p>
-          <Link to="/" className="text-blue-600 hover:underline font-semibold">بازگشت به لیست دوره‌ها</Link>
+          <Link to="/courses" className="text-blue-600 hover:underline font-semibold">بازگشت به لیست دوره‌ها</Link>
         </div>
       </div>
     );
@@ -104,7 +104,7 @@ const CourseDetailPage: React.FC = () => {
 
   return (
     <div className="p-4 bg-gray-100 min-h-screen">
-      <Link to="/" className="text-blue-600 hover:underline mb-6 block text-lg font-medium text-left rtl:text-right">
+      <Link to="/courses" className="text-blue-600 hover:underline mb-6 block text-lg font-medium text-left rtl:text-right">
         ← بازگشت به لیست دوره‌ها
       </Link>
       <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
